@@ -1,0 +1,13 @@
+.nav-link {
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.nav-link:hover {
+  color: var(--color-highlight) !important;
+}
+
+.nav-link.active {
+  font-weight: bold;
+  color: var(--color-light) !important;
+}

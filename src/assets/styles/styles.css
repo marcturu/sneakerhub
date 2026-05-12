@@ -4,10 +4,11 @@
   --color-primary: #111827;
   --color-secondary: #1f2937;
   --color-accent: #3b82f6;
-  --color-light: #fafafa;
+  --color-bg: #fafafa;
   --color-dark: #0f172a;
   --color-highlight: #22c55e;
   --color-border: #d1d5db;
+  --color-light: #f0fdf4;
 
   /* Status colors */
   --color-success: #16a34a;
@@ -53,7 +54,7 @@
 body {
   font-family: var(--font-secondary);
   color: var(--color-primary);
-  background-color: var(--color-light);
+  background-color: var(--color-bg);
 }
 
 h1, h2, h3, h4, h5, h6 {

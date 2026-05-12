@@ -4,27 +4,23 @@ import { Article, ArticleQuantityChange } from '../../models/article.model';
 @Component({
   selector: 'app-article-list',
   template: `
-    <div class="container">
-      <h1 class="list-title">Nueva colección</h1>
-      <div class="article-grid">
-        <app-article-item
-          *ngFor="let article of articles"
-          [article]="article"
-          (quantityChange)="onQuantityChange($event)">
-        </app-article-item>
+    <div class="container py-4">
+      <h1 class="list-title mb-2">Nueva colección</h1>
+      <div class="row g-4">
+        <div
+          class="col-12 col-sm-6 col-lg-4"
+          *ngFor="let article of articles">
+          <app-article-item
+            [article]="article"
+            (quantityChange)="onQuantityChange($event)">
+          </app-article-item>
+        </div>
       </div>
     </div>
   `,
   styles: [`
     .list-title {
       font-size: 2rem;
-      color: var(--color-primary);
-      margin-bottom: var(--spacing-md);
-    }
-    .article-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--spacing-md);
     }
   `]
 })
