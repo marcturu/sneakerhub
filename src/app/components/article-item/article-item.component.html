@@ -1,5 +1,4 @@
 <div class="container">
-  <h1 class="article-title">Zapatos</h1>
   <div class="article-card" [ngClass]="{ 'on-sale': article.isOnSale, 'not-available': !article.isOnSale }">
     <img [src]="article.imageUrl" alt="{{ article.name }}"/>
     <h2 class="article-name">{{  article.name }}</h2>
