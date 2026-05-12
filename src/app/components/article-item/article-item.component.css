@@ -1,0 +1,39 @@
+.article-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.article-card {
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius-sm);
+  padding: var(--spacing-sm);
+  margin: var(--spacing-md) 0;
+  text-align: center;
+  background-color: #fff;
+}
+
+.article-card.on-sale {
+  background-color: var( --color-highlight);
+  border-color: var(--color-border);
+}
+
+.article-card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: var(--border-radius-sm);
+}
+
+.cart-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: var(--spacing-sm);
+  gap: var(--spacing-xs);
+}
+
+.card-controls button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
