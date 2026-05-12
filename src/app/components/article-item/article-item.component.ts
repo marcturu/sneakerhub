@@ -1,28 +1,29 @@
-import { Component } from '@angular/core';
-import { Article } from '../../models/article.model';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { Article, ArticleQuantityChange } from '../../models/article.model';
 
 @Component({
   selector: 'app-article-item',
   templateUrl: './article-item.component.html',
-  styleUrl: './article-item.component.css'
+  styleUrl: './article-item.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ArticleItemComponent {
-  article: Article = {
-    name: 'Nike Air Max 90',
-    imageUrl: 'assets/images/nike-airmax90.jpg',
-    price: 109.99,
-    isOnSale: true,
-    quantityInCart: 0
-  };
+  @Input() article!: Article;
+  @Output() quantityChange = new EventEmitter<ArticleQuantityChange>();
 
   increment(): void {
-    this.article.quantityInCart++;
+    this.quantityChange.emit({
+      article: this.article,
+      quantity: this.article.quantityInCart + 1
+    });
   }
 
   decrement(): void {
     if (this.article.quantityInCart > 0) {
-      this.article.quantityInCart--;
-
+      this.quantityChange.emit({
+        article: this.article,
+        quantity: this.article.quantityInCart - 1
+      });
     }
   }
 }
