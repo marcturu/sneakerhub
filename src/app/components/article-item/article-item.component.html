@@ -1,13 +1,20 @@
 <div class="container">
   <h1 class="article-title">Zapatos</h1>
-  <div [class]="article.isOnSale ? 'article-card on-sale' : 'article-card'">
+  <div class="article-card" [ngClass]="{ 'on-sale': article.isOnSale, 'not-available': !article.isOnSale }">
     <img [src]="article.imageUrl" alt="{{ article.name }}"/>
-    <h2>{{  article.name }}</h2>
-    <p>{{  article.price | currency:'EUR':'symbol':'1.2-2'}}</p>
+    <h2 class="article-name">{{  article.name }}</h2>
 
-    <div class="cart-controls">
-      <button (click)="decrement()" [disabled]="article.quantityInCart === 0"></button>
-      <span>{{ article.quantityInCart }}</span>
+    <!-- ngClass en el precio: gris si no está en venta -->
+    <p class="article-price" [ngClass]="{ 'price-unavailable': !article.isOnSale }" >
+      {{  article.price | currency:'EUR':'symbol':'1.2-2'}}
+    </p>
+
+    <!-- ngIf en el botón: oculto si no está en venta -->
+    <div class="cart-controls" *ngIf="article.isOnSale">
+      <button (click)="decrement()"
+        [disabled]="article.quantityInCart === 0">-
+      </button>
+      <span class="quantity">{{ article.quantityInCart }}</span>
       <button (click)="increment()">+</button>
     </div>
   </div>
