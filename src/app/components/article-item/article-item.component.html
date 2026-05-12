@@ -1,0 +1,14 @@
+<div class="container">
+  <h1 class="article-title">Zapatos</h1>
+  <div [class]="article.isOnSale ? 'article-card on-sale' : 'article-card'">
+    <img [src]="article.imageUrl" alt="{{ article.name }}"/>
+    <h2>{{  article.name }}</h2>
+    <p>{{  article.price | currency:'EUR':'symbol':'1.2-2'}}</p>
+
+    <div class="cart-controls">
+      <button (click)="decrement()" [disabled]="article.quantityInCart === 0"></button>
+      <span>{{ article.quantityInCart }}</span>
+      <button (click)="increment()">+</button>
+    </div>
+  </div>
+</div>
