@@ -8,6 +8,7 @@ import { ArticleListComponent } from './components/article-list/article-list.com
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ArticleNewTemplateComponent } from './components/article-new-template/article-new-template.component';
 import { ArticleNewReactiveComponent } from './components/article-new-reactive/article-new-reactive.component';
+import { HeroComponent } from './components/hero/hero.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ArticleNewReactiveComponent } from './components/article-new-reactive/a
     ArticleListComponent,
     NavbarComponent,
     ArticleNewTemplateComponent,
-    ArticleNewReactiveComponent
+    ArticleNewReactiveComponent,
+    HeroComponent
   ],
   imports: [
     BrowserModule,
