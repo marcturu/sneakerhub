@@ -1,0 +1,63 @@
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: var(--spacing-md) 0;
+}
+
+.form-card {
+  width: 100%;
+  max-width: 480px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-title {
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  align-items: center;
+}
+
+.form-title .badge {
+  background-color: var(--color-success) !important;
+}
+
+.form-card .form-label {
+  font-weight: 500;
+  color: var(--color-secondary);
+  font-size: 0.9rem;
+}
+
+.form-control {
+  font-family: var(--font-secondary);
+  font-size: 0.95rem;
+  color: var(--color-primary);
+  background-color: #fafafa;
+  border-color: var(--color-border);
+  border-radius: var(--border-radius-sm);
+}
+
+.form-control:focus {
+  border-color: var(--color-highlight);
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.15);
+  background-color: #fff;
+}
+
+.btn-submit {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.75rem;
+  border-radius: var(--border-radius-sm);
+  transition: transform var(--transition-fast);
+}
+
+.btn-submit:hover {
+  transform: translateY(-1px);
+}
+
+.btn-submit:active {
+  transform: translateY(0);
+}
