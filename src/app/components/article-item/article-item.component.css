@@ -1,0 +1,47 @@
+.card {
+  width: 100%;
+  border-radius: var(--border-radius-sm);
+  padding: var(--spacing-sm);
+  margin: var(--spacing-xs) 0;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-fast);
+  border: 1px solid var(--color-border);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.card.on-sale {
+  background-color: var(--color-sand--opacity);
+  border-color: var(--color-highlight);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: var(--border-radius-sm);
+}
+
+.card-title {
+  font-size: 1.5rem;
+  margin: var(--spacing-sm) 0;
+}
+
+.price-unavailable {
+  color: gray;
+  text-decoration: line-through;
+}
+
+.btn-dark:hover:not(:disabled) {
+  border-color: var(--color-accent);
+}
+
+.btn-outline-dark:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  border-color: gray;
+  color: gray;
+}
