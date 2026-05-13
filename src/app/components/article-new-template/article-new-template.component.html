@@ -38,16 +38,10 @@
               placeholder="109.99"
               ngModel
               #priceField="ngModel"
-              required
-              min="0.1">
+              required>
               <div class="invalid-feedback"
                 *ngIf="priceField.errors?.['required'] && (priceField.dirty || priceField.touched || articleForm.submitted)">
                 El precio de los zapatos es obligatorio
-
-              </div>
-              <div class="invalid-feedback"
-                *ngIf="priceField.errors?.['min'] && (priceField.dirty || priceField.touched || articleForm.submitted)">
-                El precio de los zapatos debe ser mayor que 0
               </div>
             </div>
           </div>
