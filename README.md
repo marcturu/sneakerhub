@@ -78,24 +78,24 @@ Los estilos globales que se crearon, se declararon como:
 ```
 en el `angular.json`. 
 
-## Ejercicio 3 - Directivas en nuestro proyecto
+### Ejercicio 3 - Directivas en nuestro proyecto
 Se añadió `text-decoration: line-through;` (a parte del color gris) al **precio** cuando el artículo no estaba disponible.
 
-## Ejercicio 4 - Componentes en nuestro proyecto
+### Ejercicio 4 - Componentes en nuestro proyecto
 Para crear el nuevo componente con *estilos en línea* y *templates* se usó (en **Angular CLI**):
 ```bash
 $ ng generate component components/article-list --inline-template --inline-style     
 ```
 de esta manera, el HTML y CSS estaban en el propio `article-list.component.ts` y todos los componentes quedaban agrupados en `/components`.
 
-## Ejercicio 5 - Repaso de componentes
+### Ejercicio 5 - Repaso de componentes
 La lógica para escoger qué vista mostrar se declaró en `app.component.ts` con:
 ```ts
 type ActiveView = 'list' | 'template' | 'reactive';
 ```
 y se añadió un pequeño componente **hero** que solamente se mostraba en la página de inicio (o, en otras palabras, la de la lista de artículos).
 
-## Ejercicio 6 - Formularios dirigidos por templates
+### Ejercicio 6 - Formularios dirigidos por templates
 Aunque se trabajase con **Template Forms**, se añadió *FormsModule* en `app.module.ts` para poder usar directivas como `ngModel` y `ngModelGroup` en el *template*.
 
 Para comprobar la **validez de una URL para localizar un recurso**, se incluyó el siguiente patrón en la clase `ArticleNewTemplateComponent`:  
@@ -121,7 +121,7 @@ min="0.1">
 </div>
 ```
 
-## Ejercicio 7 - Formularios reactivos
+### Ejercicio 7 - Formularios reactivos
 Se creó `src/app/validators/name-article.validator.ts` para realizar una validación customizada propia y comprobar la validez del campo *name*.  
 Para asegurarse de que cualquier combinación de mayúsculas o minúsculas de esas palabras no fuera posible, se aplicó `toLowerCase()` al **value** que se recibía en la función como parámetro:  
 ```ts
