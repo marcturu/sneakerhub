@@ -1,0 +1,18 @@
+.hero {
+   width: 100%;
+  height: 280px;
+
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--border-radius-sm);
+  transition: opacity var(--transition-normal);
+  box-shadow: var(--shadow-lg);
+}
+
+.hero-img:hover {
+  opacity: 0.95;
+}

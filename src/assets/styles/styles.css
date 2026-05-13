@@ -48,6 +48,7 @@
 
   --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
   --shadow-md: 0 6px 20px rgba(0,0,0,0.12);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.32);
 
   --transition-fast: 0.2s ease;
   --transition-normal: 0.3s ease;
