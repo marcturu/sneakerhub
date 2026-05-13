@@ -9,6 +9,8 @@
   --color-highlight: #22c55e;
   --color-border: #d1d5db;
   --color-light: #f0fdf4;
+  --color-sand: #E3D5B8;
+  --color-sand--opacity: #E3D5B880; /* 50% */
 
   /* Status colors */
   --color-success: #16a34a;

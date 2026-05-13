@@ -14,7 +14,7 @@
 }
 
 .card.on-sale {
-  background-color: var(--color-light);
+  background-color: var(--color-sand--opacity);
   border-color: var(--color-highlight);
 }
 
