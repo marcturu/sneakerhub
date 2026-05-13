@@ -25,13 +25,13 @@ export class ArticleNewReactiveComponent implements OnInit {
   }
 
   get name() {
-    return this.articleForm.get('name') as FormGroup;
+    return this.articleForm.get('name');
   }
   get price() {
-    return this.articleForm.get('price') as FormGroup;
+    return this.articleForm.get('price');
   }
   get imageUrl() {
-    return this.articleForm.get('imageUrl') as FormGroup;
+    return this.articleForm.get('imageUrl');
   }
 
   onSubmit(): void {
