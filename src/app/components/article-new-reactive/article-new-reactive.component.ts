@@ -36,21 +36,24 @@ export class ArticleNewReactiveComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (this.articleForm.valid) {
-      const newArticle: Article = {
-        id: Date.now(),
-        name: this.articleForm.value.name,
-        price: this.articleForm.value.price,
-        imageUrl: this.articleForm.value.imageUrl,
-        isOnSale: this.articleForm.value.isOnSale ?? false,
-        quantityInCart: 0
-      }
-      this.articleService.create(newArticle).subscribe(article => {
-        console.log('Artículo creado:', article);
+  if (this.articleForm.valid) {
+    const newArticle = {
+      //id: Date.now(), // ID asignado en el servidor
+      name: this.articleForm.value.name,
+      imageUrl: this.articleForm.value.imageUrl,
+      price: this.articleForm.value.price,
+      isOnSale: this.articleForm.value.isOnSale ?? false,
+      //quantityInCart: 0 //  0 por defecto en el servidor
+    };
+    this.articleService.create(newArticle as Article).subscribe({
+      next: (article) => {
+        console.log('Artículo creado en servidor:', article);
         this.articleForm.reset();
-      });
-    } else {
-      this.articleForm.markAllAsTouched();
-    }
+      },
+      error: (err) => console.error('Error al crear artículo:', err)
+    });
+  } else {
+    this.articleForm.markAllAsTouched();
   }
+}
 }

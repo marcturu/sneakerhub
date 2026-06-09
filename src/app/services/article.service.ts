@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Article } from '../models/article.model';
 
@@ -7,54 +8,24 @@ import { Article } from '../models/article.model';
 })
 export class ArticleService {
 
-  private articles: Article[] = [
-    {
-      id: 1,
-      name: 'Nike Air Max 90',
-      imageUrl: 'assets/images/nike-airmax90.jpg',
-      price: 109.99,
-      isOnSale: true,
-      quantityInCart: 0
-    },
-    {
-      id: 2,
-      name: 'Adidas Ultraboost 22',
-      imageUrl: 'assets/images/adidas-ultraboost22.jpg',
-      price: 129.99,
-      isOnSale: true,
-      quantityInCart: 0
-    },
-    {
-      id: 3,
-      name: 'Puma Smash V2',
-      imageUrl: 'assets/images/puma-smashv2.jpg',
-      price: 89.99,
-      isOnSale: false,
-      quantityInCart: 0
+  private apiUrl = 'http://localhost:3000/api/articles';
+
+  constructor(private http: HttpClient) {}
+
+  getArticles(query?: string): Observable<Article[]> {
+    let params = new HttpParams();
+    if (query && query.trim() !== '') {
+      params = params.set('q', query.trim());
     }
-  ];
-
-  private articlesSubject = new BehaviorSubject<Article[]>(this.articles);
-
-  getArticles(): Observable<Article[]> {
-    return this.articlesSubject.asObservable();
+    return this.http.get<Article[]>(this.apiUrl, { params });
   }
 
-  changeQuantity(articleID: number, changeInQuantity: number): Observable <Article> {
-    const article = this.articles.find(a => a.id === articleID);
-    if (!article) {
-      throw new Error(`Article ${articleID} not found`);
-    }
-    article.quantityInCart = changeInQuantity;
-    this.articlesSubject.next([...this.articles]);
-    return of(article);
+  changeQuantity(articleId: number, changeInQuantity: number): Observable<Article> {
+    return this.http.patch<Article>(`${this.apiUrl}/${articleId}`, { changeInQuantity });
   }
 
   create(article: Article): Observable<any> {
-    const newArticle = { ...article, id: Date.now() };
-    this.articles = [...this.articles, newArticle];
-    this.articlesSubject.next(this.articles);
-    return of(newArticle);
+    return this.http.post<Article>(this.apiUrl, article);
   }
 
 }

@@ -9,5 +9,5 @@ export interface Article {
 
 export interface ArticleQuantityChange {
   article: Article;
-  quantity: number;
+  delta: number;
 }

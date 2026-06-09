@@ -14,7 +14,7 @@ export class ArticleItemComponent {
   increment(): void {
     this.quantityChange.emit({
       article: this.article,
-      quantity: this.article.quantityInCart + 1
+      delta: 1
     });
   }
 
@@ -22,7 +22,7 @@ export class ArticleItemComponent {
     if (this.article.quantityInCart > 0) {
       this.quantityChange.emit({
         article: this.article,
-        quantity: this.article.quantityInCart - 1
+        delta: -1
       });
     }
   }
