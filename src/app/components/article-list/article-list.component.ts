@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Article, ArticleQuantityChange } from '../../models/article.model';
+import { ArticleService } from '../../services/article.service';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Component({
   selector: 'app-article-list',
@@ -9,7 +11,7 @@ import { Article, ArticleQuantityChange } from '../../models/article.model';
       <div class="row g-4">
         <div
           class="col-12 col-sm-6 col-lg-4"
-          *ngFor="let article of articles">
+          *ngFor="let article of articles$ | async">
           <app-article-item
             [article]="article"
             (quantityChange)="onQuantityChange($event)">
@@ -24,39 +26,17 @@ import { Article, ArticleQuantityChange } from '../../models/article.model';
     }
   `]
 })
-export class ArticleListComponent {
+export class ArticleListComponent implements OnInit {
 
-  articles: Article[] = [
-    {
-      id: 1,
-      name: 'Nike Air Max 90',
-      imageUrl: 'assets/images/nike-airmax90.jpg',
-      price: 109.99,
-      isOnSale: true,
-      quantityInCart: 0
-    },
-    {
-      id: 2,
-      name: 'Adidas Ultraboost 22',
-      imageUrl: 'assets/images/adidas-ultraboost22.jpg',
-      price: 129.99,
-      isOnSale: true,
-      quantityInCart: 0
-    },
-    {
-      id: 3,
-      name: 'Puma Smash V2',
-      imageUrl: 'assets/images/puma-smashv2.jpg',
-      price: 89.99,
-      isOnSale: false,
-      quantityInCart: 0
-    }
-  ];
+  articles$!: Observable<Article[]>;
 
-  onQuantityChange(changes: ArticleQuantityChange): void {
-    const article = this.articles.find(a => a.id === changes.article.id);
-    if (article) {
-      article.quantityInCart = changes.quantity;
-    }
+  constructor(private articleService: ArticleService) { }
+
+  ngOnInit(): void {
+    this.articles$ = this.articleService.getArticles();
+  }
+
+  onQuantityChange(change: ArticleQuantityChange): void {
+    this.articleService.changeQuantity(change.article.id, change.quantity).subscribe();
   }
 }

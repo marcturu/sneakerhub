@@ -5,10 +5,8 @@
   --color-secondary: #1f2937;
   --color-accent: #3b82f6;
   --color-bg: #fafafa;
-  --color-dark: #0f172a;
   --color-highlight: #22c55e;
   --color-border: #d1d5db;
-  --color-light: #f0fdf4;
   --color-sand: #E3D5B8;
   --color-sand--opacity: #E3D5B880; /* 50% */
 
@@ -28,18 +26,9 @@
   --spacing-lg: 4rem;
   --spacing-xl: 8rem;
 
-  /* Breakpoints */
-  --bp-sm: 576px;
-  --bp-md: 768px;
-  --bp-lg: 992px;
-  --bp-xl: 1200px;
-  --bp-xxl: 1400px;
-
   /* Layout */
   --container-max-width: 1200px;
-  --container-narrow-max-width: 900px;
   --container-padding: 1.5rem;
-  --header-height: 4rem;
 
   /* UI */
   --border-radius-sm: 8px;

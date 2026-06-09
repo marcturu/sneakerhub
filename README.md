@@ -1,7 +1,7 @@
-# ⚡ PEC 3 - Desarrollo Frontend con Framework JavaScript
+# ⚡ PEC 4 - Desarrollo Frontend con Framework JavaScript
 
 ![Angular](https://img.shields.io/badge/Angular-17-DD0031?logo=angular)  
-<sub>🗓️ Desarrollado en mayo del 2026</sub>
+<sub>🗓️ Desarrollado en junio del 2026</sub>
 
 | Campo | Valor |
 |---|---|
@@ -64,78 +64,15 @@ para ejecutar tests `end-to-end` via la plataforma que escojas.
 
 ## Ejercicios
 
-### Ejercicio 1 - Instalación y configuración
-La version de Angular que se instaló fue la **17**.
+### Ejercicio 1 - Servicios
 
-### Ejercicio 2 - Primer componente en Angular
-Al utilizar `[class]` se podía hacer *property binding* y enlazar datos unidireccionalmente, asignando valores desde el controlador (**.ts**) a la vista (**.html**).  
+### Ejercicio 2 - HttpClient
 
-Los estilos globales que se crearon, se declararon como:
-```json
-"styles": [
-  "src/assets/styles/styles.css"
-],
-```
-en el `angular.json`. 
+### Ejercicio 3 - Pipes
 
-## Ejercicio 3 - Directivas en nuestro proyecto
-Se añadió `text-decoration: line-through;` (a parte del color gris) al **precio** cuando el artículo no estaba disponible.
+### Ejercicio 4 - Routing
 
-## Ejercicio 4 - Componentes en nuestro proyecto
-Para crear el nuevo componente con *estilos en línea* y *templates* se usó (en **Angular CLI**):
-```bash
-$ ng generate component components/article-list --inline-template --inline-style     
-```
-de esta manera, el HTML y CSS estaban en el propio `article-list.component.ts` y todos los componentes quedaban agrupados en `/components`.
-
-## Ejercicio 5 - Repaso de componentes
-La lógica para escoger qué vista mostrar se declaró en `app.component.ts` con:
-```ts
-type ActiveView = 'list' | 'template' | 'reactive';
-```
-y se añadió un pequeño componente **hero** que solamente se mostraba en la página de inicio (o, en otras palabras, la de la lista de artículos).
-
-## Ejercicio 6 - Formularios dirigidos por templates
-Aunque se trabajase con **Template Forms**, se añadió *FormsModule* en `app.module.ts` para poder usar directivas como `ngModel` y `ngModelGroup` en el *template*.
-
-Para comprobar la **validez de una URL para localizar un recurso**, se incluyó el siguiente patrón en la clase `ArticleNewTemplateComponent`:  
-```ts
-urlPattern = /^(?!.*\.\.)https?:\/\/[a-zA-Z0-9][a-zA-Z0-9\-._~:/?#[\]@!$&'()*+,;=%]*\.[a-zA-Z]{2,3}$/;
-```
-donde `(?!.*\.\.)` validaba específicamente no incluir ".." en, por ejemplo, **h ttps://ejemplo..com**.  
-De esta manera, se validaba el uso de URLs con estilo **http(s)://dominio.xx(x)**.
-
-El siguiente código incluido en el *submit* del form usaba **false** como predeterminado si *form.value.article.isOnSale* era **null** o **undefined**:
-```ts
-isOnSale: form.value.article.isOnSale ?? false
-```  
-
-Inicialmente, se comprobaba que el **price** fuera > 0, pero, como en el siguiente ejercicio se pedía esto explícitamente, y en este solo se mencionaba que "El **precio** debe ser **numérico**", se optó por quitar esta comprobación para este caso.  
-De todas maneras, esta se podía conseguir con:
-```html
-<input ...
-min="0.1">
-<div class="invalid-feedback"
-  *ngIf="priceField.errors?.['min'] && (priceField.dirty || priceField.touched || articleForm.submitted)">
-  El precio de los zapatos debe ser mayor que 0
-</div>
-```
-
-## Ejercicio 7 - Formularios reactivos
-Se creó `src/app/validators/name-article.validator.ts` para realizar una validación customizada propia y comprobar la validez del campo *name*.  
-Para asegurarse de que cualquier combinación de mayúsculas o minúsculas de esas palabras no fuera posible, se aplicó `toLowerCase()` al **value** que se recibía en la función como parámetro:  
-```ts
-NameArticleValidator(control: AbstractControl): ValidationErrors | null
-```
-```ts
-const forbidden = ['prueba', 'test', 'mock', 'fake'];
-const value = control.value?.trim().toLowerCase();
-```
-
----
-
-![Artículos creados con template y reactivo](src/assets/images/ConsoleLog(s)_Form(s).png)
-Fig. 2 - Artículos creados con **template** y **reactive**.
+### Ejercicio 5 - Práctica sobre Lazy-Loading
 
 --- 
 
