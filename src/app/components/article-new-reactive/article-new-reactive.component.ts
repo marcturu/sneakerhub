@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Article } from '../../models/article.model';
 import { NameArticleValidator } from '../../validators/name-article.validator';
+import { ArticleService } from '../../services/article.service';
 
 @Component({
   selector: 'app-article-new-reactive',
@@ -13,7 +14,7 @@ export class ArticleNewReactiveComponent implements OnInit {
 
   urlPattern = /^(?!.*\.\.)https?:\/\/[a-zA-Z0-9][a-zA-Z0-9\-._~:/?#[\]@!$&'()*+,;=%]*\.[a-zA-Z]{2,3}$/;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private articleService: ArticleService) { }
 
   ngOnInit(): void {
     this.articleForm = this.fb.group({
@@ -44,8 +45,10 @@ export class ArticleNewReactiveComponent implements OnInit {
         isOnSale: this.articleForm.value.isOnSale ?? false,
         quantityInCart: 0
       }
-      console.log('Nuevo artículo creado:', newArticle);
-      this.articleForm.reset();
+      this.articleService.create(newArticle).subscribe(article => {
+        console.log('Artículo creado:', article);
+        this.articleForm.reset();
+      });
     } else {
       this.articleForm.markAllAsTouched();
     }
