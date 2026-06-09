@@ -3,7 +3,7 @@
     'on-sale': article.isOnSale,
   }">
   <img
-    [src]="article.imageUrl"
+    [src]="article.imageUrl ? article.imageUrl : ''"
     alt="{{ article.name }}"
     class="card-img-top" >
 

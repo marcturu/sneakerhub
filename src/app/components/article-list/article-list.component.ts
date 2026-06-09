@@ -1,13 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { Article, ArticleQuantityChange } from '../../models/article.model';
 import { ArticleService } from '../../services/article.service';
-import { Observable } from 'rxjs/internal/Observable';
+import { Observable, Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, switchMap, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-article-list',
   template: `
     <div class="container py-4">
       <h1 class="list-title mb-2">Nueva colección</h1>
+      <div class="search-wrapper">
+        <input
+          type="text"
+          class="form-control search-input"
+          placeholder="Buscar zapatillas..."
+          (input)="onSearch($event)">
+      </div>
       <div class="row g-4">
         <div
           class="col-12 col-sm-6 col-lg-4"
@@ -24,19 +32,47 @@ import { Observable } from 'rxjs/internal/Observable';
     .list-title {
       font-size: 2rem;
     }
+
+    .search-wrapper {
+      margin-bottom: var(--spacing-md);
+      max-width: 400px;
+    }
+
+    .search-input {
+      font-family: var(--font-secondary);
+      border-color: var(--color-border);
+      border-radius: var(--border-radius-sm);
+    }
+
+    .search-input:focus {
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+    }
   `]
 })
 export class ArticleListComponent implements OnInit {
 
   articles$!: Observable<Article[]>;
+  private searchSubject = new Subject<string>();
 
   constructor(private articleService: ArticleService) { }
 
   ngOnInit(): void {
-    this.articles$ = this.articleService.getArticles();
+    this.articles$ = this.searchSubject.pipe(
+      startWith(''),
+      debounceTime(300),
+      distinctUntilChanged(),
+      switchMap(query => this.articleService.getArticles(query))
+    );
+  }
+
+  onSearch(event: Event): void {
+    const query = (event.target as HTMLInputElement).value;
+    this.searchSubject.next(query);
   }
 
   onQuantityChange(change: ArticleQuantityChange): void {
-    this.articleService.changeQuantity(change.article.id, change.quantity).subscribe();
+    this.articleService.changeQuantity(change.article.id, change.delta)
+      .subscribe();
   }
 }
