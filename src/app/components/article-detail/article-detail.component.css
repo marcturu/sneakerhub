@@ -1,0 +1,41 @@
+.container {
+  padding: var(--spacing-md) 0;
+}
+
+.detail-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.detail-layout {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: flex-start;
+}
+
+.detail-image img {
+  width: 280px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: var(--border-radius-sm);
+}
+
+.detail-info {
+  padding-block: var(--spacing-sm);
+}
+
+.detail-name {
+  font-size: 2.5rem;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.detail-price {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: var(--spacing-sm);
+}

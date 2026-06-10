@@ -15,3 +15,15 @@
   font-weight: bold;
   color: var(--color-sand) !important;
 }
+
+.nav-link--restricted {
+  opacity: 0.5;
+}
+
+.nav-link--restricted:hover {
+  color: var(--color-danger) !important;
+}
+
+.nav-link--danger:hover {
+  color: var(--color-danger) !important;
+}

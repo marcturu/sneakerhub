@@ -28,4 +28,8 @@ export class ArticleService {
     return this.http.post<Article>(this.apiUrl, article);
   }
 
+  getArticleById(id: number | string): Observable<Article> {
+    return this.http.get<Article>(`${this.apiUrl}/${id}`);
+  }
+
 }
