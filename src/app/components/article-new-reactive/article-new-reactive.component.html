@@ -2,13 +2,13 @@
   <div class="card form-card">
     <div class="card-body">
       <h2 class="form-title">
-        Nuevo artículo
-        <span class="badge bg-primary ms-2">Reactivo</span>
+        New product
+        <span class="badge bg-primary ms-2">Reactive</span>
       </h2>
 
       <form [formGroup]="articleForm" (ngSubmit)="onSubmit()" novalidate>
         <div class="mb-3">
-          <label for="name" class="form-label">Nombre del artículo</label>
+          <label for="name" class="form-label">Name</label>
           <input
             type="text"
             id="name"
@@ -18,16 +18,16 @@
             formControlName="name">
           <div class="invalid-feedback"
             *ngIf="name?.errors?.['required'] && (name?.dirty || name?.touched)">
-            El nombre de los zapatos es obligatorio
+            Product name is required
           </div>
           <div class="invalid-feedback"
             *ngIf="name?.errors?.['forbiddenName'] && (name?.dirty || name?.touched)">
-            El nombre de los zapatos no puede ser Prueba, Test, Mock ni Fake
+            Product name can not be Prueba, Test, Mock or Fake
           </div>
         </div>
 
         <div class="mb-3">
-          <label for="price" class="form-label">Precio</label>
+          <label for="price" class="form-label">Price</label>
           <div class="input-group">
             <span class="input-group-text">€</span>
             <input
@@ -39,31 +39,31 @@
               formControlName="price">
             <div class="invalid-feedback"
               *ngIf="price?.errors?.['required'] && (price?.dirty || price?.touched)">
-              El precio de los zapatos es obligatorio
+              Product price is required
             </div>
             <div class="invalid-feedback"
               *ngIf="price?.errors?.['min'] && (price?.dirty || price?.touched)">
-              El precio mínimo de los zapatos es 0,1 €
+              Minimum product price is 0,1 €
             </div>
           </div>
         </div>
 
         <div class="mb-3">
-          <label for="imageUrl" class="form-label">URL de la imagen</label>
+          <label for="imageUrl" class="form-label">Image URL</label>
           <input
             type="text"
             id="imageUrl"
             class="form-control"
             [class.is-invalid]="imageUrl?.invalid && (imageUrl?.dirty || imageUrl?.touched)"
-            placeholder="https://www.direccion.com/nuevo-articulo.jpg"
+            placeholder="https://www.example.com/new-product.jpg"
             formControlName="imageUrl">
           <div class="invalid-feedback"
             *ngIf="imageUrl?.errors?.['required'] && (imageUrl?.dirty || imageUrl?.touched)">
-            La URL de la imagen es obligatoria
+            Image URL is required
           </div>
           <div class="invalid-feedback"
             *ngIf="imageUrl?.errors?.['pattern'] && (imageUrl?.dirty || imageUrl?.touched)">
-            La URL de la imagen de los zapatos no es una URL válida
+            The sneaker image URL is not a valid URL
           </div>
         </div>
 
@@ -74,14 +74,14 @@
               id="isOnSale"
               class="form-check-input"
               formControlName="isOnSale">
-            <label for="isOnSale" class="form-check-label">En venta</label>
+            <label for="isOnSale" class="form-check-label">For sale</label>
           </div>
         </div>
 
         <button
           type="submit"
           class="btn btn-success w-100 btn-submit">
-          Crear
+          Create
         </button>
 
       </form>

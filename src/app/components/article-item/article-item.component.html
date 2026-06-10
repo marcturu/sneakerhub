@@ -5,7 +5,8 @@
   <img
     [src]="article.imageUrl | defaultImage"
     alt="{{ article.name }}"
-    class="card-img-top" >
+    [routerLink]="['/article', article.id]"
+    >
 
     <div class="card-body d-flex flex-column">
       <h2 class="card-title">{{  article.name }}</h2>

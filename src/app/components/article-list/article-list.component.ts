@@ -3,17 +3,20 @@ import { Article, ArticleQuantityChange } from '../../models/article.model';
 import { ArticleService } from '../../services/article.service';
 import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap, startWith } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-article-list',
   template: `
+  <app-hero *ngIf="router.url === '/article/list'"></app-hero>
+
     <div class="container py-4">
-      <h1 class="list-title mb-2">Nueva colección</h1>
+      <h1 class="list-title mb-2">New Arrivals</h1>
       <div class="search-wrapper">
         <input
           type="text"
           class="form-control search-input"
-          placeholder="Buscar zapatillas..."
+          placeholder="Search sneakers..."
           (input)="onSearch($event)">
       </div>
       <div class="row g-4">
@@ -55,7 +58,7 @@ export class ArticleListComponent implements OnInit {
   articles$!: Observable<Article[]>;
   private searchSubject = new Subject<string>();
 
-  constructor(private articleService: ArticleService) { }
+  constructor(private articleService: ArticleService, public router: Router) { }
 
   ngOnInit(): void {
     this.articles$ = this.searchSubject.pipe(
