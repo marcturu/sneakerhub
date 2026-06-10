@@ -11,6 +11,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { ArticleNewTemplateComponent } from './components/article-new-template/article-new-template.component';
 import { ArticleNewReactiveComponent } from './components/article-new-reactive/article-new-reactive.component';
 import { HeroComponent } from './components/hero/hero.component';
+import { DefaultImagePipe } from './pipes/default-image.pipe';
+import { PricePipe } from './pipes/price.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { HeroComponent } from './components/hero/hero.component';
     NavbarComponent,
     ArticleNewTemplateComponent,
     ArticleNewReactiveComponent,
-    HeroComponent
+    HeroComponent,
+    DefaultImagePipe,
+    PricePipe
   ],
   imports: [
     BrowserModule,
