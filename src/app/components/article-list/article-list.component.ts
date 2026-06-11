@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Article, ArticleQuantityChange } from '../../models/article.model';
 import { ArticleService } from '../../services/article.service';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, BehaviorSubject, combineLatest } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap, startWith } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
@@ -57,15 +57,16 @@ export class ArticleListComponent implements OnInit {
 
   articles$!: Observable<Article[]>;
   private searchSubject = new Subject<string>();
+  private refreshSubject = new BehaviorSubject<string>('');
 
   constructor(private articleService: ArticleService, public router: Router) { }
 
   ngOnInit(): void {
-    this.articles$ = this.searchSubject.pipe(
-      startWith(''),
-      debounceTime(300),
-      distinctUntilChanged(),
-      switchMap(query => this.articleService.getArticles(query))
+    this.articles$ = combineLatest([
+      this.searchSubject.pipe(startWith(''), debounceTime(300), distinctUntilChanged()),
+      this.refreshSubject
+    ]).pipe(
+      switchMap(([query]) => this.articleService.getArticles(query))
     );
   }
 
@@ -76,6 +77,9 @@ export class ArticleListComponent implements OnInit {
 
   onQuantityChange(change: ArticleQuantityChange): void {
     this.articleService.changeQuantity(change.article.id, change.delta)
-      .subscribe();
+      .subscribe({
+        next: () => this.refreshSubject.next(''),  // fuerza nuevo GET
+        error: (err) => console.error(err)
+      });
   }
 }
