@@ -31,30 +31,29 @@ Fig. 1 - Logotipo de **SneakerHub**.
 ---
 
 ## Cómo ejecutar el proyecto
+```bash
+npm install
+```
 
 ### Desarrollo
 ```bash
-npm install
 ng serve
 ```
 La aplicación estará disponible en `http://localhost:4200`.
 
 ### Build
 ```bash
-npm install
 ng build
 ```
 y consultar el directorio `dist/`.  
 
 ### Tests
 ```bash
-npm install
 ng test
 ```
 para ejecutar los tests unitarios via [Karma](https://karma-runner.github.io).  
 
 ```bash
-npm install
 ng ng e2e
 ```
 para ejecutar tests `end-to-end` via la plataforma que escojas. 
