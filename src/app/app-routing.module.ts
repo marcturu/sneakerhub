@@ -1,19 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
-import { ArticleListComponent } from './components/article-list/article-list.component';
-import { ArticleNewReactiveComponent } from './components/article-new-reactive/article-new-reactive.component';
-import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
-import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'article/list', component: ArticleListComponent },
-  { path: 'article/create', component: ArticleNewReactiveComponent, canActivate: [AuthGuard] },
-  { path: 'article/:id', component: ArticleDetailComponent },
+  { path: '', loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule) },
+  { path: 'article', loadChildren: () => import('./modules/article/article.module').then(m => m.ArticleModule) },
   { path: '**', redirectTo: 'login' }
 ];
 
