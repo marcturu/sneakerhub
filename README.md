@@ -14,7 +14,7 @@
 ## Decisiones técnicas generales
 
 ### Estructura de ramas
-Se ha trabajado con ramas Git a pesar de ser un proyecto individual, con el objetivo de mantener un historial limpio y organizado. Los *merges* se realizaron con `--no-ff` para preservar el commit de estos aunque la rama base no hubiera cambiado. Estas ramas estaban formadas por de 3 (4) bloques:
+Se ha trabajado con ramas Git a pesar de ser un proyecto individual, con el objetivo de mantener un historial limpio y organizado. Los *merges* se realizaron con `--no-ff` para preservar el commit de estos aunque la rama base no hubiera cambiado. Estas ramas estaban formadas por 3 (4) bloques:
 - **main**: Para generar las versiones finales de la aplicación.
 - **develop** y **feature/0x-ejy**: Para desarrollar los ejercicios (funcionalidades) de la práctica y juntarlas en *develop*.
 - **hotfix/nombre**: Para arreglar errores puntuales.
@@ -62,7 +62,7 @@ para ejecutar tests `end-to-end` via la plataforma que escojas.
 
 > Para usar este comando, es necesario incluir un *package* que implemente la capacidad de realizar tests *end-to-end*.
 
-### 2. Servidor
+### 2. Servidor (NodeJS)
 ```bash
 cd server-articles
 npm install
@@ -90,10 +90,10 @@ El servidor estará disponible en `http://localhost:3000`.
 |---------|----------|-------------|
 | GET | `/api/articles` | Obtiene todos los artículos. |
 | GET | `/api/articles/:id` | Obtiene un artículo por identificador. |
-| POST | `/articles/` | Crea nu nuevo artículo. |
-| PATCH | `/articles/:id` | Actualiza la **quantity** de un artículo. |
-| POST | `/user/login` | Identifica un usuario existente. |
-| POST | `/user/register` | Crea un usuario nuevo. |
+| POST | `/api/articles/` | Crea un nuevo artículo. |
+| PATCH | `api/articles/:id` | Actualiza la **quantity** de un artículo. |
+| POST | `/api/user/login` | Identifica un usuario existente. |
+| POST | `/api/user/register` | Crea un usuario nuevo. |
 
 ---
 
@@ -104,7 +104,7 @@ Para crear el nuevo servicio se hizo (en **Angular CLI**):
 ```bash
 $ ng generate service services/article     
 ```
-Se utilizó un `BehaviorSubject` para mantener el estado actual de los artículos y permitir que los componentes recibieran automáticamente las actualizaciones.  
+Inicialmente (y antes de utilizar las llamadas al servidor) se utilizó `BehaviorSubject` para mantener el estado actual de los artículos y permitir que los componentes recibieran automáticamente las actualizaciones.  
 Además, `article-list.component.ts` delegaba toda la lógica al servicio y `article-new-reactive.component.ts`, a parte de devolver un *console.log()*, llamaba a la nueva función 
 ```ts
 articleService.create()

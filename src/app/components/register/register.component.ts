@@ -39,7 +39,7 @@ export class RegisterComponent implements OnInit {
           setTimeout(() => this.router.navigate(['/login']), 2000);
         },
         error: () => {
-          this.errorMessage = 'User already exists';
+          this.errorMessage = 'User already exists, please login';
         }
       });
     } else {
