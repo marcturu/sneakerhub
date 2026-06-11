@@ -3,9 +3,10 @@
     'on-sale': article.isOnSale,
   }">
   <img
-    [src]="article.imageUrl"
+    [src]="article.imageUrl | defaultImage"
     alt="{{ article.name }}"
-    class="card-img-top" >
+    [routerLink]="['/article', article.id]"
+    >
 
     <div class="card-body d-flex flex-column">
       <h2 class="card-title">{{  article.name }}</h2>
@@ -15,7 +16,7 @@
         [ngClass]="{
           'price-unavailable': !article.isOnSale
         }">
-        {{  article.price | currency:'EUR':'symbol':'1.2-2'}}
+        {{  article.price | price }}
       </p>
 
       <!-- ngIf en el botón: oculto si no está en venta -->

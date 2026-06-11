@@ -2,14 +2,14 @@
   <div class="card form-card">
     <div class="card-body">
       <h2 class="form-title">
-        Nuevo artículo
+        New product
         <span class="badge bg-primary ms-2">Template</span>
       </h2>
 
       <form #articleForm="ngForm" (ngSubmit)="onSubmit(articleForm)" novalidate>
         <ng-container ngModelGroup="article">
           <div class="mb-3">
-            <label for="name" class="form-label">Nombre del artículo</label>
+            <label for="name" class="form-label">Name</label>
             <input
               type="text"
               id="name"
@@ -22,12 +22,12 @@
               required>
               <div class="invalid-feedback"
                 *ngIf="nameField.errors?.['required'] && (nameField.dirty || nameField.touched || articleForm.submitted)">
-                El nombre de los zapatos es obligatorio
+                Product name is required
               </div>
           </div>
 
           <div class="mb-3">
-            <label for="price" class="form-label">Precio</label>
+            <label for="price" class="form-label">Price</label>
             <div class="input-group">
               <span class="input-group-text">€</span>
               <input
@@ -42,31 +42,31 @@
               required>
               <div class="invalid-feedback"
                 *ngIf="priceField.errors?.['required'] && (priceField.dirty || priceField.touched || articleForm.submitted)">
-                El precio de los zapatos es obligatorio
+                Product price is required
               </div>
             </div>
           </div>
 
           <div class="mb-3">
-            <label for="imageUrl" class="form-label">URL de la imagen</label>
+            <label for="imageUrl" class="form-label">Image URL</label>
             <input
               type="text"
               id="imageUrl"
               name="imageUrl"
               class="form-control"
               [class.is-invalid]="imageUrlField.invalid && (imageUrlField.dirty || imageUrlField.touched || articleForm.submitted)"
-              placeholder="https://www.direccion.com/nuevo-articulo.jpg"
+              placeholder="https://www.example.com/new-product.jpg"
               ngModel
               #imageUrlField="ngModel"
               required
               [pattern]="urlPattern">
               <div class="invalid-feedback"
                 *ngIf="imageUrlField.errors?.['required'] && (imageUrlField.dirty || imageUrlField.touched || articleForm.submitted)">
-                La URL de la imagen es obligatoria
+                Image URL is required
               </div>
               <div class="invalid-feedback"
                 *ngIf="imageUrlField.errors?.['pattern'] && (imageUrlField.dirty || imageUrlField.touched || articleForm.submitted)">
-                La URL de la imagen de los zapatos no es una URL válida
+                The sneaker image URL is not a valid URL
               </div>
           </div>
 
@@ -78,7 +78,7 @@
               name="isOnSale"
               class="form-check-input"
               ngModel>
-            <label for="isOnSale" class="form-check-label">En venta</label>
+            <label for="isOnSale" class="form-check-label">For sale</label>
             </div>
           </div>
         </ng-container>
@@ -86,7 +86,7 @@
         <button
           type="submit"
           class="btn btn-primary w-100 btn-submit">
-          Crear
+          Create
         </button>
 
       </form>

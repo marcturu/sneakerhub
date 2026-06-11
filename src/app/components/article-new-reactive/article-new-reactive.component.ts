@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Article } from '../../models/article.model';
 import { NameArticleValidator } from '../../validators/name-article.validator';
+import { ArticleService } from '../../services/article.service';
 
 @Component({
   selector: 'app-article-new-reactive',
@@ -13,7 +14,7 @@ export class ArticleNewReactiveComponent implements OnInit {
 
   urlPattern = /^(?!.*\.\.)https?:\/\/[a-zA-Z0-9][a-zA-Z0-9\-._~:/?#[\]@!$&'()*+,;=%]*\.[a-zA-Z]{2,3}$/;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private articleService: ArticleService) { }
 
   ngOnInit(): void {
     this.articleForm = this.fb.group({
@@ -35,19 +36,24 @@ export class ArticleNewReactiveComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (this.articleForm.valid) {
-      const newArticle: Article = {
-        id: Date.now(),
-        name: this.articleForm.value.name,
-        price: this.articleForm.value.price,
-        imageUrl: this.articleForm.value.imageUrl,
-        isOnSale: this.articleForm.value.isOnSale ?? false,
-        quantityInCart: 0
-      }
-      console.log('Nuevo artículo creado:', newArticle);
-      this.articleForm.reset();
-    } else {
-      this.articleForm.markAllAsTouched();
-    }
+  if (this.articleForm.valid) {
+    const newArticle = {
+      //id: Date.now(), // ID asignado en el servidor
+      name: this.articleForm.value.name,
+      imageUrl: this.articleForm.value.imageUrl,
+      price: this.articleForm.value.price,
+      isOnSale: this.articleForm.value.isOnSale ?? false,
+      //quantityInCart: 0 //  0 por defecto en el servidor
+    };
+    this.articleService.create(newArticle as Article).subscribe({
+      next: (article) => {
+        console.log('Artículo creado en servidor:', article);
+        this.articleForm.reset();
+      },
+      error: (err) => console.error('Error al crear artículo:', err)
+    });
+  } else {
+    this.articleForm.markAllAsTouched();
   }
+}
 }

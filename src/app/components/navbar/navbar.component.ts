@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-
-type ActiveView = 'list' | 'template' | 'reactive';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserStoreService } from '../../services/user-store.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -8,10 +9,18 @@ type ActiveView = 'list' | 'template' | 'reactive';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
-  @Input() activeView: ActiveView = 'list';
-  @Output() navigate = new EventEmitter<ActiveView>();
 
-  goTo(view: ActiveView): void {
-    this.navigate.emit(view);
+  isLoggedIn$: Observable<boolean>;
+
+  constructor(
+    private router: Router,
+    private userStore: UserStoreService
+  ) {
+    this.isLoggedIn$ = this.userStore.isLoggedIn$;
+  }
+
+  logout(): void {
+    this.userStore.logout();
+    this.router.navigate(['/login']);
   }
 }

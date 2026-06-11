@@ -73,6 +73,45 @@ para ejecutar tests `end-to-end` via la plataforma que escojas.
 ### Ejercicio 4 - Routing
 
 ### Ejercicio 5 - Práctica sobre Lazy-Loading
+Las rutas utilizadas en el `user-routing.module.ts` fueron:
+```ts
+const routes: Routes = [
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent }
+];
+```
+y en `article-routing.module.ts`:
+```ts
+const routes: Routes = [
+  { path: 'list', component: ArticleListComponent },
+  { path: 'create', component: ArticleNewReactiveComponent, canActivate: [AuthGuard] },
+  { path: 'create-template', component: ArticleNewTemplateComponent },
+  { path: ':id', component: ArticleDetailComponent }
+];
+```  
+Además, se debió actualizar `app-routing.module.ts` y utilizar la nueva sintaxis **Angular +8** con *import() dinámico*, y `app.module.ts` para quitar las edclaraciones que ya se hacían en cada módulo específicamente.   
+
+De esta manera, las rutas *login* y *register* eran relativas al módulo **User**, y las rutas *article/list*, *article/create*, *article/:id* eran relativas al módulo *Article*. El prefijo lo ponía el AppRoutingModule.  
+
+Conviene recalcar que, aparte de las rutas de las vistas de cada módulo, también se añadieron componentes extra que usaba cada página, como por ejemplo en `article.module.ts`:
+```ts
+import { HeroComponent } from '../../components/hero/hero.component';
+import { DefaultImagePipe } from '../../pipes/default-image.pipe';
+import { PricePipe } from '../../pipes/price.pipe';
+```
+
+Como se puede comprobar al ejecutar:
+```bash
+$ ng serve
+```
+se generan los archivos con **lazy loading**, siendo **chunk-GOWGP27F.js** **article-module**, y **chunk-ZRWLDDKV.js** **user-module**:  
+
+<img src="src/assets/images/LazyLoadingConsole.png" alt="Lazy loading en consola"/>  
+
+y se cargan correspondientemente en la web:  
+
+<img src="src/assets/images/LazyLoadingDevTools.png" alt="Lazy loading en DevTools"/>  
+
 
 --- 
 

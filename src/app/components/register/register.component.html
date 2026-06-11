@@ -1,0 +1,51 @@
+<div class="form-wrapper">
+  <div class="card form-card">
+    <div class="card-body">
+      <h2 class="form-title">
+        Register
+        <span class="badge bg-success ms-2">Create Account</span>
+      </h2>
+
+      <div class="alert alert-danger" *ngIf="errorMessage">{{ errorMessage }}</div>
+      <div class="alert alert-success" *ngIf="successMessage">{{ successMessage }}</div>
+
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
+
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input
+            id="username"
+            type="text"
+            class="form-control"
+            placeholder="Choose a username"
+            [class.is-invalid]="username?.invalid && (username?.dirty || username?.touched)"
+            formControlName="username">
+          <div class="invalid-feedback"
+            *ngIf="username?.errors?.['required'] && (username?.dirty || username?.touched)">
+            Username is required
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="password" class="form-label">Password</label>
+          <input
+            id="password"
+            type="password"
+            class="form-control"
+            placeholder="Chose a password"
+            [class.is-invalid]="password?.invalid && (password?.dirty || password?.touched)"
+            formControlName="password">
+          <div class="invalid-feedback"
+            *ngIf="password?.errors?.['required'] && (password?.dirty || password?.touched)">
+            Password is required
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-success w-100 btn-submit">
+          Register
+        </button>
+
+      </form>
+    </div>
+  </div>
+</div>

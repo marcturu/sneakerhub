@@ -1,11 +1,4 @@
-<app-navbar [activeView]="activeView" (navigate)="onNavigate($event)"></app-navbar>
-
+<app-navbar>app-navbar></app-navbar>
 <main class="main-content">
-  <ng-container *ngIf="activeView === 'list'">
-      <app-hero></app-hero>
-    <app-article-list></app-article-list>
-  </ng-container>
-
-  <app-article-new-template *ngIf="activeView === 'template'"></app-article-new-template>
-  <app-article-new-reactive *ngIf="activeView === 'reactive'"></app-article-new-reactive>
+  <router-outlet></router-outlet>
 </main>

@@ -1,0 +1,22 @@
+<div class="container" *ngIf="article$ | async as article">
+  <div class="detail-card card">
+    <div class="card-body">
+      <div class="detail-layout">
+        <div class="detail-image">
+          <img [src]="article.imageUrl | defaultImage" [alt]="article.name"/>
+        </div>
+        <div class="detail-info">
+          <h1 class="detail-name">{{ article.name }}</h1>
+          <p class="detail-price">
+            {{ article.price | price }}
+          </p>
+          <span class="badge"
+            [class.bg-success]="article.isOnSale"
+            [class.bg-secondary]="!article.isOnSale">
+            {{ article.isOnSale ? 'En venta' : 'No disponible' }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
