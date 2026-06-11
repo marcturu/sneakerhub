@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/article/list']);
         },
         error: () => {
-          this.errorMessage = 'Usuario o contraseña incorrectos';
+          this.errorMessage = 'Username or password is incorrect';
         }
       });
     } else {

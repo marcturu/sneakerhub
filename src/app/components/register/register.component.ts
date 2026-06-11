@@ -35,11 +35,11 @@ export class RegisterComponent implements OnInit {
       this.userService.register(this.registerForm.value).subscribe({
         next: () => {
           console.log('Successfully registered');
-          this.successMessage = 'Usuario creado correctamente, por favor inicia sesión';
+          this.successMessage = 'User created successfully, please login';
           setTimeout(() => this.router.navigate(['/login']), 1500);
         },
         error: () => {
-          this.errorMessage = 'El usuario ya existe';
+          this.errorMessage = 'User already exists';
         }
       });
     } else {
