@@ -31,19 +31,19 @@ cd sneakerhub
 npm install
 ```
 
-#### Development
+#### 2a. Development
 ```bash
 ng serve
 ```
 App available at `http://localhost:4200`.
 
-#### Build
+#### 2b. Build
 ```bash
 ng build
 ```
 and check directory `dist/`.  
 
-#### Tests
+#### 2c. Tests
 ```bash
 ng test
 ```
