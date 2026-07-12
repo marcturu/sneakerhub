@@ -1,4 +1,4 @@
-# <img alt="ExpoMuseos Logo" src="src/assets/images/SneakerHub.png" height="150px"> — Angular sneakers directory
+# <img alt="ExpoMuseos Logo" src="src/assets/images/SneakerHubREADME.png" height="150px"> — Angular sneakers directory
 
 ![Angular](https://img.shields.io/badge/Angular-17-DD0031?logo=angular)  
 <sub>🗓️ Developed in June 2026</sub>
