@@ -1,126 +1,216 @@
-# ⚡ PEC 4 - Desarrollo Frontend con Framework JavaScript
+# <img alt="ExpoMuseos Logo" src="src/assets/images/SneakerHub.png" height="150px"> — Angular sneakers directory
 
 ![Angular](https://img.shields.io/badge/Angular-17-DD0031?logo=angular)  
-<sub>🗓️ Desarrollado en junio del 2026</sub>
+<sub>🗓️ Developed in June 2026</sub>
 
-| Campo | Valor |
-|---|---|
-| **Login UOC** | mturur |
-| **Nombre** | Marc Turu Roca |
-| **Máster** | Desarrollo de Sitios y Aplicaciones Web |
+## ✅ Features
 
---- 
-
-## Decisiones técnicas generales
-
-### Estructura de ramas
-Se ha trabajado con ramas Git a pesar de ser un proyecto individual, con el objetivo de mantener un historial limpio y organizado. Los *merges* se realizaron con `--no-ff` para preservar el commit de estos aunque la rama base no hubiera cambiado. Estas ramas estaban formadas por 3 (4) bloques:
-- **main**: Para generar las versiones finales de la aplicación.
-- **develop** y **feature/0x-ejy**: Para desarrollar los ejercicios (funcionalidades) de la práctica y juntarlas en *develop*.
-- **hotfix/nombre**: Para arreglar errores puntuales.
-
-### Extras
-1. En la hoja de estilos se crearon variables personalizadas para mantener un orden y coherencia visual. Entre ellas estaban: ```--color-primary: #111827;```, ```--spacing-sm: 1rem;```, ```--container-max-width: 1200px;```,...  
-
-2. A partir de estos colores, se realizó un diseño sencillo para que sirviese como logotipo y *favicon* de la web:  
-<img src="src/assets/images/SneakerHub.png" alt="Logotipo de la web" width="150" />  
-Fig. 1 - Logotipo de **SneakerHub**.
-
-3. Se utilizó el *framework CSS* `Bootstrap` en componentes como **Navbar**, **Card**, **Lista** de Cards y **Form**. De esta manera, se podían reutilizar elementos ya existentes, editarlos al gusto propio y centrarse más en otras funcionalidades útiles del nuevo framework JS Angular.
+- **/login**: Formulario reactivo de autenticación con validación y mensajes de error.
+- **/register**: Formulario reactivo de registro con validación y mensajes de error.
+- **/article/list**: Catálogo de productos con buscador en tiempo real mediante `debounceTime` y `switchMap`.
+- **/article/:id**: Vista de detalle de cada producto accesible clicando su imagen.
+- **/article/create**: Formulario reactivo protegido por `AuthGuard` para crear nuevos productos.
+- **Lazy Loading**: Módulos `UserModule` y `ArticleModule` cargados bajo demanda.
+- **Interceptor HTTP**: Añade automáticamente el token de autenticación en cada petición.
+- **Remember login**: Sesión persistente entre recargas mediante `localStorage`.
+- **Pipe custom**: `defaultImage` para mostrar imagen por defecto cuando `imageUrl` está vacía.
+- **Bootstrap** for *Navbar*, *Card*, card's *List* and *Form*.
 
 ---
 
-## Cómo ejecutar el proyecto
+## 🛠 Installation & Setup
 
-### 1. Cliente (Angular)
+### 1. Clone the repository
 ```bash
+git clone https://github.com/marcturu/sneakerhub.git
+```
+
+### 2. Client (Angular)
+```bash
+cd sneakerhub
 npm install
 ```
 
-#### Desarrollo
+#### Development
 ```bash
 ng serve
 ```
-La aplicación estará disponible en `http://localhost:4200`.
+App available at `http://localhost:4200`.
 
 #### Build
 ```bash
 ng build
 ```
-y consultar el directorio `dist/`.  
+and check directory `dist/`.  
 
 #### Tests
 ```bash
 ng test
 ```
-para ejecutar los tests unitarios via [Karma](https://karma-runner.github.io).  
+to execute unit tests from [Karma](https://karma-runner.github.io).  
 
 ```bash
 ng ng e2e
 ```
-para ejecutar tests `end-to-end` via la plataforma que escojas.  
+to execute `end-to-end` tests from the chosen platform.  
 
-> Para usar este comando, es necesario incluir un *package* que implemente la capacidad de realizar tests *end-to-end*.
+> To use this command, it is necessary to include a package that implements the capability to perform *end-to-end* tests.
 
-### 2. Servidor (NodeJS)
+### 3. Server (NodeJS)
 ```bash
 cd server-articles
 npm install
 npm start
 ```
-El servidor estará disponible en `http://localhost:3000`.  
+Server available at `http://localhost:3000`.  
 
-> Para que la aplicación funcione correctamente, tanto el cliente como el servidor deben estar ejecutándose simultáneamente.
+> For the application to function correctly, both the client and the server must be running simultaneously.
 
 ---
 
-## Rutas disponibles
+## Available routes
 
-### Aplicación web
-| Ruta | Descripción |
+### Web app
+| Route | Description |
 |--------|-------------|
-| `/article/list` | Muestra el catálogo de productos. |
-| `/article/:id` | Muestra el detalle de un producto. |
-| `/article/create` | Permite crear un producto. |
-| `/login` | Página de inicio de sesión. |
-| `/register` | Página de registro de usuarios. |
+| `/article/list` | Displays the product catalog. |
+| `/article/:id` | Displays product details. |
+| `/article/create` | Allows you to create a product. |
+| `/login` | User login page. |
+| `/register` | User registration page. |
 
 ### API REST
-| Método | Endpoint | Descripción |
+| Method | Endpoint | Description |
 |---------|----------|-------------|
-| GET | `/api/articles` | Obtiene todos los artículos. |
-| GET | `/api/articles/:id` | Obtiene un artículo por identificador. |
-| POST | `/api/articles/` | Crea un nuevo artículo. |
-| PATCH | `api/articles/:id` | Actualiza la **quantity** de un artículo. |
-| POST | `/api/user/login` | Identifica un usuario existente. |
-| POST | `/api/user/register` | Crea un usuario nuevo. |
+| GET | `/api/articles` | Retrieves all items. |
+| GET | `/api/articles/:id` | Retrieves an item by identifier. |
+| POST | `/api/articles/` | Creates a new item. |
+| PATCH | `api/articles/:id` | Updates the **quantity** of an item. |
+| POST | `/api/user/login` | Identifies an existing user. |
+| POST | `/api/user/register` | Creates a new user. |
 
 ---
 
-## Ejercicios
+## Exercises
 
-### Ejercicio 1 - Servicios
-Para crear el nuevo servicio se hizo (en **Angular CLI**):
+> Exercises 1.1–1.7 were completed first, and then updated as part of the improvements made in exercises 2.1–2.5, so the file contents were updated as well.
+
+### Exercise 1.1 - Installation and configuration
+The version of Angular installed was **17**.
+
+### Exercise 1.2 - First component in Angular
+By using `[class]`, *property binding* could be applied to bind data
+unidirectionally, assigning values from the controller (**.ts**) to the
+view (**.html**).  
+The global styles created were declared as:
+```json
+"styles": [
+  "src/assets/styles/styles.css"
+],
+```
+in `angular.json`.
+
+### Exercise 1.3 - Directives in our project
+`text-decoration: line-through;` was added (in addition to the grey colour)
+to the **price** when the article was not available.
+
+### Exercise 1.4 - Components in our project
+To create the new component with *inline styles* and *templates*, the following
+command was used (**Angular CLI**):
+```bash
+$ ng generate component components/article-list --inline-template --inline-style     
+```
+this way, the HTML and CSS were contained within `article-list.component.ts`
+itself and all components were grouped under `/components`.
+
+### Exercise 1.5 - Component review
+The logic for choosing which view to display was declared in `app.component.ts`
+with:
+```ts
+type ActiveView = 'list' | 'template' | 'reactive';
+```
+and a small **hero** component was added that was only shown on the home page
+(in other words, the article list page).
+
+### Exercise 1.6 - Template-driven forms
+Even though **Template Forms** were used, *FormsModule* was added to
+`app.module.ts` in order to use directives such as `ngModel` and `ngModelGroup`
+in the *template*.  
+To validate the **validity of a URL to locate a resource**, the following pattern
+was included in the `ArticleNewTemplateComponent` class:
+```ts
+urlPattern = /^(?!.*\.\.)https?:\/\/[a-zA-Z0-9][a-zA-Z0-9\-._~:/?#[\]@!$&'()*+,;=%]*\.[a-zA-Z]{2,3}$/;
+```
+where `(?!.*\.\.)` specifically validated that ".." was not included in, for
+example, **https://ejemplo..com**.  
+This way, URLs following the pattern **http(s)://domain.xx(x)** were validated.
+
+The following code included in the form *submit* used **false** as the default
+value if *form.value.article.isOnSale* was **null** or **undefined**:
+```ts
+isOnSale: form.value.article.isOnSale ?? false
+```  
+Initially, a check was made to ensure the **price** was > 0, but since the next
+exercise explicitly required this, and this one only stated that "The **price**
+must be **numeric**", it was decided to remove this check for this case.  
+Regardless, this could have been achieved with:
+```html
+<input ...
+min="0.1">
+<div class="invalid-feedback"
+  *ngIf="priceField.errors?.['min'] && (priceField.dirty || priceField.touched || articleForm.submitted)">
+  The price of the sneakers must be greater than 0
+</div>
+```
+
+### Exercise 1.7 - Reactive forms
+`src/app/validators/name-article.validator.ts` was created to implement a
+custom validation and check the validity of the *name* field.  
+To ensure that any combination of upper and lower case letters of those words
+was not possible, `toLowerCase()` was applied to the **value** received as a
+parameter in the function:
+```ts
+NameArticleValidator(control: AbstractControl): ValidationErrors | null
+```
+```ts
+const forbidden = ['prueba', 'test', 'mock', 'fake'];
+const value = control.value?.trim().toLowerCase();
+```
+
+![Articles created with template and reactive](src/assets/images/ConsoleLog(s)_Form(s).png)
+Fig. 1 - Articles created with **template** and **reactive** forms.
+
+---
+
+### Exercise 2.1 - Services
+To create the new service, the following command was used (**Angular CLI**):
 ```bash
 $ ng generate service services/article     
 ```
-Inicialmente (y antes de utilizar las llamadas al servidor) se utilizó `BehaviorSubject` para mantener el estado actual de los artículos y permitir que los componentes recibieran automáticamente las actualizaciones.  
-Además, `article-list.component.ts` delegaba toda la lógica al servicio y `article-new-reactive.component.ts`, a parte de devolver un *console.log()*, llamaba a la nueva función 
+Initially (and before using server calls), `BehaviorSubject` was used to maintain
+the current state of the articles and allow components to receive updates
+automatically.  
+Additionally, `article-list.component.ts` delegated all logic to the service and
+`article-new-reactive.component.ts`, apart from returning a *console.log()*, called
+the new function:
 ```ts
 articleService.create()
 ```
-para añadir el item del form.
+to add the item from the form.
 
-### Ejercicio 2 - HttpClient
-En la función 
+### Exercise 2.2 - HttpClient
+In the function:
 ```ts
 onQuantityChange(change: ArticleQuantityChange)
 ```
-de `article-list.component.ts`, anteriormente se hacía que el parámetro pasado como **change** era el nuevo valor del carrito. Después, observando el valor esperado en el
+in `article-list.component.ts`, the parameter passed as **change** was previously
+the new cart value. After inspecting the expected value in:
 ```js
 router.patch('/:id', (req, res) => {}
 ```
-del servidor, se pudo comprobar que esperaba cuánto se quería incrementar o decrementar, por lo que se tuvo que cambiar la función anterior, el modelo que definía el **ArticleQuantityChange** y la manera para modificar dicho valor del item:
+on the server, it was confirmed that it expected how much to increment or
+decrement, so the function, the **ArticleQuantityChange** model and the way
+to modify the item value had to be changed:
 ```ts
 increment(): void {
   this.quantityChange.emit({
@@ -129,29 +219,35 @@ increment(): void {
   });
 }
 ```
-Para el buscador, se utilizó **debounceTime(300)** para evitar sobrecargar el backend con llamadas HTTP por cada tecla, y **switchMap** para convertir el string en HTTP request y cancelar las peticiones anteriores si llegaba otra.  
+For the search bar, **debounceTime(300)** was used to avoid overloading the
+backend with HTTP calls on every keystroke, and **switchMap** to convert the
+string into an HTTP request and cancel previous requests if a new one arrived.  
 
-Para mantener la lista de artículos actualizada en tiempo real tras modificar una cantidad, se combinaron dos `Subject` con `combineLatest`:
-- `searchSubject`: emitía el texto del buscador con `debounceTime(300)` y
-  `distinctUntilChanged` para evitar peticiones innecesarias.
-- `refreshSubject` (`BehaviorSubject`): emitía un valor vacío cada vez que
-  se completaba un `PATCH` de cantidad, forzando un nuevo `GET` al servidor.  
+To keep the article list updated in real time after modifying a quantity, two
+`Subject` instances were combined with `combineLatest`:
+- `searchSubject`: emitted the search text with `debounceTime(300)` and
+  `distinctUntilChanged` to avoid unnecessary requests.
+- `refreshSubject` (`BehaviorSubject`): emitted an empty value every time a
+  quantity `PATCH` completed, forcing a new `GET` to the server.  
 
-Esto era necesario porque el servidor gestionaba el estado (sumaba o restaba 1 al `quantityInCart` en cada PATCH), por
-lo que la única forma de tener el valor actualizado era volver a pedirlo.
+This was necessary because the server managed the state (adding or subtracting
+1 to `quantityInCart` on each PATCH), so the only way to have the updated
+value was to request it again.
 
-### Ejercicio 3 - Pipes
-En la práctica anterior, específicamente en `article-item.component.html`, ya tenía una pipe *built-in*:
+### Exercise 2.3 - Pipes
+In the previous assignment, specifically in `article-item.component.html`, there
+was already a *built-in* pipe:
 ```html
 {{  article.price | currency:'EUR':'symbol':'1.2-2'}}
 ```
-pero para este ejercicio, generé dos pipes nuevas personalizadas (ya que no se muestra la contrario) con:
+but for this exercise, two new custom pipes were generated with:
 ```bash
 ng generate pipe pipes/default-image pipes/price
 ```
 
-### Ejercicio 4 - Routing
-Se creó `user.model.ts` para poder utilizarlo en, por ejemplo, el tipado de datos de las llamadas **HTTP** o en el tipado de los *returns* del `user.service.ts`:
+### Exercise 2.4 - Routing
+`user.model.ts` was created to be used in, for example, typing **HTTP** call
+data or the return types of `user.service.ts`:
 ```ts
 export interface User {
   username: string;
@@ -167,53 +263,65 @@ export interface RegisterResponse {
   msg: string;
 }
 ```
-> Para saber exactamente qué tipado utilizar, se tuvo que consultar la respuesta que lanzaba cada llamada en el servidor en los `res.json({...})`.  
+> To know exactly which types to use, the responses returned by each server
+> call in `res.json({...})` had to be consulted.  
 
-Se añadió la siguiente función en `article.service.ts` para usarse en `article-detail.component.ts` y poder recuperar el articulo referente a su **id**:
+The following function was added to `article.service.ts` for use in
+`article-detail.component.ts` to retrieve the article corresponding to its **id**:
 ```ts
 getArticleById(id: number): Observable<Article> {
   return this.http.get<Article>(`${this.apiUrl}/${id}`);
 } 
 ```  
 
-Se añadió:
+The following was added to `article-item.component.html` (along with
+`cursor: pointer`) to redirect the item to its `article-detail.component`:
 ```html
 [routerLink]="['/article', article.id]"
 ```
-en `article-item.component.html` (además de `cursor: pointer`) para redirigir el item a su `article-detail.component`.  
 
-A partir de Angular +15, el guard basado en clase con **CanActivate** está deprecado, por lo que se implementó con:
+From Angular +15 onwards, the class-based guard using **CanActivate** is
+deprecated, so it was implemented as:
 ```ts
 export const AuthGuard: CanActivateFn = () => {...}
 ```
-y no se inyectó en los **providers** de `app.module.ts`, ya que era simplemente una función que se usaba directamente en la ruta:
+and was not injected into the **providers** of `app.module.ts`, since it is
+simply a function used directly in the route:
 ```ts
 { path: 'article/create', component: ArticleNewReactiveComponent, canActivate: [AuthGuard] },
 ```
-de `app-routing.module.ts`.  
+in `app-routing.module.ts`.  
 
-Se implementó un interceptor HTTP (`article-app.interceptor.ts`) encargado de añadir automáticamente la cabecera Authorization con el token almacenado cuando el usuario estaba autenticado.  
+An HTTP interceptor (`article-app.interceptor.ts`) was implemented to
+automatically add the Authorization header with the stored token whenever
+the user was authenticated.  
 
-En la barra de navegación se usó `*ngIf="isLoggedIn$ | async"` para controlar qué página mostrar dependiendo de si el usuario estaba *logueado* o no. De este modo, se mostraban 2 barras de navegación:
+In the navigation bar, `*ngIf="isLoggedIn$ | async"` was used to control which
+options to display depending on whether the user was logged in or not, resulting
+in two different navbar states:
 
 <img src="src/assets/images/NavbarWOLogin.png" alt="Navbar without Login" />   
-Fig. 2 - Barra de navegación sin usuario logueado.  
+Fig. 2 - Navigation bar without a logged-in user.  
 
 <img src="src/assets/images/NavbarWLogin.png" alt="Navbar with Login"/>   
-Fig. 3 - Barra de navegación con usuario logueado.  
+Fig. 3 - Navigation bar with a logged-in user.  
 
-El enunciado indicaba que el endpoint `/user/register` asignaba automáticamente la contraseña **SECRET** a todos los usuarios registrados. Sin embargo, el servidor proporcionado implementaba un comportamiento diferente y almacenaba la contraseña recibida en la petición.  
-Dado que el objetivo de la práctica era consumir la API proporcionada, la aplicación cliente se ha adaptado al comportamiento real del backend, enviando y utilizando la contraseña introducida por el usuario durante el registro y la autenticación.
+The assignment stated that the `/user/register` endpoint automatically assigned
+the password **SECRET** to all registered users. However, the provided server
+implemented different behaviour and stored the password received in the request.  
+Since the goal of the assignment was to consume the provided API, the client
+application was adapted to the actual backend behaviour, sending and using the
+password entered by the user during registration and authentication.
 
-### Ejercicio 5 - Práctica sobre Lazy-Loading
-Las rutas utilizadas en el `user-routing.module.ts` fueron:
+### Exercise 2.5 - Lazy Loading
+The routes used in `user-routing.module.ts` were:
 ```ts
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent }
 ];
 ```
-y en `article-routing.module.ts`:
+and in `article-routing.module.ts`:
 ```ts
 const routes: Routes = [
   { path: 'list', component: ArticleListComponent },
@@ -222,41 +330,64 @@ const routes: Routes = [
   { path: ':id', component: ArticleDetailComponent }
 ];
 ```  
-Además, se debió actualizar `app-routing.module.ts` y utilizar la nueva sintaxis **Angular +8** con *import() dinámico*, y `app.module.ts` para quitar las declaraciones que ya se hacían en cada módulo específicamente.   
+Additionally, `app-routing.module.ts` had to be updated to use the new
+**Angular +8** syntax with *dynamic import()*, and `app.module.ts` was cleaned
+up to remove declarations already handled by each specific module.   
 
-De esta manera, las rutas *login* y *register* eran relativas al módulo **User**, y las rutas *article/list*, *article/create*, *article/:id* eran relativas al módulo *Article*. El prefijo lo ponía el AppRoutingModule.  
+This way, the *login* and *register* routes were relative to the **User** module,
+and the *article/list*, *article/create*, *article/:id* routes were relative to
+the **Article** module. The prefix was set by the AppRoutingModule.  
 
-Conviene recalcar que, aparte de las rutas de las vistas de cada módulo, también se añadieron componentes extra que usaba cada página, como por ejemplo en `article.module.ts`:
+It is worth noting that, apart from the view routes of each module, extra
+components used by each page were also declared, for example in `article.module.ts`:
 ```ts
 import { HeroComponent } from '../../components/hero/hero.component';
 import { DefaultImagePipe } from '../../pipes/default-image.pipe';
 import { PricePipe } from '../../pipes/price.pipe';
 ```
 
-Como se puede comprobar al ejecutar:
+As can be verified by running:
 ```bash
 $ ng serve
 ```
-se generan los archivos con **lazy loading**, siendo **chunk-GOWGP27F.js** **article-module**, y **chunk-ZRWLDDKV.js** **user-module**:  
+the files are generated with **lazy loading**, with **chunk-GOWGP27F.js** being
+**article-module** and **chunk-ZRWLDDKV.js** being **user-module**:  
 
-<img src="src/assets/images/LazyLoadingConsole.png" alt="Lazy loading en consola"/>  
+<img src="src/assets/images/LazyLoadingConsole.png" alt="Lazy loading in console"/>  
 
-Fig. 4 - Muestra del Lazy Loading en la consola.  
+Fig. 4 - Lazy Loading shown in the console.  
 
-y se cargan correspondientemente en la web:  
+and they are loaded correspondingly in the browser:  
 
-<img src="src/assets/images/LazyLoadingDevTools.png" alt="Lazy loading en DevTools"/>  
-Fig. 5 - Muestra del Lazy Loading en la las DevTools de Firefox Developer.  
+<img src="src/assets/images/LazyLoadingDevTools.png" alt="Lazy loading in DevTools"/>  
+Fig. 5 - Lazy Loading shown in Firefox Developer DevTools.  
 
-Esta separación permitía que los módulos de usuarios y artículos solo se descargaran cuando eran necesarios, reduciendo el tamaño del *bundle* inicial.
+This separation meant that the user and article modules were only downloaded
+when needed, reducing the size of the initial *bundle*.
 
 --- 
 
-## Consideraciones
+## Considerations
 
-- Los artículos y usuarios se almacenan en memoria en el servidor (por lo que, al reiniciar el *cliente* (frontend), se mantienen los datos).
-- Por contra, al reiniciar el *servidor* (backend) se pierden los datos creados.
+- Articles and users are stored in memory on the server (so restarting the
+  *client* (frontend) does not affect the data).
+- However, restarting the *server* (backend) causes all created data to be lost.
 
 ---
 
-> Marc Turu Roca · Máster Universitario de Desarrollo de Sitios y Aplicaciones Web
+## 📷 Screenshots 
+
+### Article list:
+![ArticleList](src/assets/images/screenshots/Article-list.png)
+
+### Article item:
+![ArticleItem](src/assets/images/screenshots/Article-item.png)
+
+### Create article:
+![CreateArticle](src/assets/images/screenshots/Create-article.png)
+
+### Login:
+![Login](src/assets/images/screenshots/Login.png)
+
+### Register:
+![Register](src/assets/images/screenshots/Register.png)
