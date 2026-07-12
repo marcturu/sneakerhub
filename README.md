@@ -89,7 +89,7 @@ Server available at `http://localhost:3000`.
 
 ---
 
-## Available routes
+## 🔗 Available routes
 
 ### Web app (Client)
 | Route | Description |
@@ -112,7 +112,7 @@ Server available at `http://localhost:3000`.
 
 ---
 
-## Exercises
+## 🎯 Exercises
 
 > Exercises 1.1–1.7 were completed first, and then updated as part of the improvements made in exercises 2.1–2.5, so the file contents were updated as well.
 
@@ -388,7 +388,7 @@ when needed, reducing the size of the initial *bundle*.
 
 --- 
 
-## Considerations
+## ⚠️ Considerations
 
 - Articles and users are stored in memory on the server (so restarting the
   *client* (frontend) does not affect the data).
