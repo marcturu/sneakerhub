@@ -1,6 +1,7 @@
 # <img alt="ExpoMuseos Logo" src="src/assets/images/SneakerHubREADME.png" height="150px"> — Angular sneakers directory
 
-![Angular](https://img.shields.io/badge/Angular-17-DD0031?logo=angular)  
+![Angular](https://img.shields.io/badge/Angular-17-DD0031?logo=angular) ![TypeScript](https://img.shields.io/badge/Typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=black)  
+  
 <sub>🗓️ Developed in June 2026</sub>
 
 ## ✅ Features
