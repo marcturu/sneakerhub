@@ -70,7 +70,7 @@ Server available at `http://localhost:3000`.
 
 ## Available routes
 
-### Web app
+### Web app (Client)
 | Route | Description |
 |--------|-------------|
 | `/article/list` | Displays the product catalog. |
@@ -79,7 +79,7 @@ Server available at `http://localhost:3000`.
 | `/login` | User login page. |
 | `/register` | User registration page. |
 
-### API REST
+### API REST (Server)
 | Method | Endpoint | Description |
 |---------|----------|-------------|
 | GET | `/api/articles` | Retrieves all items. |
