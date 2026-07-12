@@ -1,21 +1,41 @@
 # <img alt="ExpoMuseos Logo" src="src/assets/images/SneakerHubREADME.png" height="150px"> — Angular sneakers directory
 
-![Angular](https://img.shields.io/badge/Angular-17-DD0031?logo=angular) ![TypeScript](https://img.shields.io/badge/Typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=black)  
+![Angular](https://img.shields.io/badge/Angular-17-DD0031?style=for-the-badge&logo=angular&logoColor=white)
+![TypeScript](https://img.shields.io/badge/Typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=black)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
   
 <sub>🗓️ Developed in June 2026</sub>
 
 ## ✅ Features
 
-- **/login**: Formulario reactivo de autenticación con validación y mensajes de error.
-- **/register**: Formulario reactivo de registro con validación y mensajes de error.
-- **/article/list**: Catálogo de productos con buscador en tiempo real mediante `debounceTime` y `switchMap`.
-- **/article/:id**: Vista de detalle de cada producto accesible clicando su imagen.
-- **/article/create**: Formulario reactivo protegido por `AuthGuard` para crear nuevos productos.
-- **Lazy Loading**: Módulos `UserModule` y `ArticleModule` cargados bajo demanda.
-- **Interceptor HTTP**: Añade automáticamente el token de autenticación en cada petición.
-- **Remember login**: Sesión persistente entre recargas mediante `localStorage`.
-- **Pipe custom**: `defaultImage` para mostrar imagen por defecto cuando `imageUrl` está vacía.
-- **Bootstrap** for *Navbar*, *Card*, card's *List* and *Form*.
+### 🔐 Authentication
+- **Login**: Reactive form with validation, error messages and redirect if already authenticated.
+- **Register**: Reactive form with validation and error messages.
+- **Remember login**: Session persistence across page reloads via `localStorage`.
+- **Auth Guard**: Route `/article/create` protected and only accessible after login.
+- **HTTP Interceptor**: Automatically attaches the `Authorization` header with the stored token to every outgoing request.
+
+### 👟 Articles
+- **Article list**: Product catalog fetched from a REST API with real-time search using `debounceTime` and `switchMap`.
+- **Article detail**: Detail view for each product, accessible by clicking its image, navigated via Angular Router with route parameter `/:id`.
+- **Article item**: Displays name, price, image and availability. Highlights on-sale items and shows quantity controls only when available.
+- **Create article**: Reactive form with field validation, custom `NameArticleValidator` and POST to the REST API. *(Templaet form also available in code)*
+- **Quantity control**: Real-time cart quantity update via PATCH requests, with automatic list refresh using `combineLatest` and `BehaviorSubject`.
+
+### 🧱 Architecture
+- **Angular services**: All business logic extracted from components into `ArticleService`, `UserService` and `UserStoreService`.
+- **Lazy Loading**: `UserModule` and `ArticleModule` loaded on demand, reducing the initial bundle size.
+- **RxJS**: Extensive use of `Observable`, `BehaviorSubject`, `Subject`, `switchMap`, `combineLatest`, `debounceTime` and `distinctUntilChanged`.
+- **Async pipe**: Used throughout instead of manual subscriptions to avoid memory leaks.
+- **OnPush change detection**: Applied to `ArticleItemComponent` for optimised rendering.
+
+### 🎨 UI & Styling
+- **Custom CSS variables**: Design system with tokens for colours, spacing, typography, shadows and breakpoints.
+- **Bootstrap**: Used for `Navbar`, `Card`, grid layout and `Form` components.
+- **Custom pipes**: `defaultImage` to show a fallback image when `imageUrl` is empty, and `price` for currency formatting.
+- **Responsive grid**: Article list adapts to different screen sizes using Bootstrap's grid system.
+- **Hero component**: Decorative hero section shown exclusively on the article list page.
 
 ---
 
