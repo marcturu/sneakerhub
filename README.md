@@ -23,11 +23,11 @@
 ### 1. Clone the repository
 ```bash
 git clone https://github.com/marcturu/sneakerhub.git
+cd sneakerhub
 ```
 
 ### 2. Client (Angular)
 ```bash
-cd sneakerhub
 npm install
 ```
 
