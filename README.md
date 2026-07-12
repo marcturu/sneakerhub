@@ -383,8 +383,8 @@ when needed, reducing the size of the initial *bundle*.
 ### Article item:
 ![ArticleItem](src/assets/images/screenshots/Article-item.png)
 
-### Create article:
-![CreateArticle](src/assets/images/screenshots/Create-article.png)
+### Create article (*reactive form*):
+![CreateArticle(ReactiveForm)](src/assets/images/screenshots/Create-article-(reactive-form).png)
 
 ### Login:
 ![Login](src/assets/images/screenshots/Login.png)
