@@ -20,7 +20,7 @@
 - **Article list**: Product catalog fetched from a REST API with real-time search using `debounceTime` and `switchMap`.
 - **Article detail**: Detail view for each product, accessible by clicking its image, navigated via Angular Router with route parameter `/:id`.
 - **Article item**: Displays name, price, image and availability. Highlights on-sale items and shows quantity controls only when available.
-- **Create article**: Reactive form with field validation, custom `NameArticleValidator` and POST to the REST API. *(Templaet form also available in code)*
+- **Create article**: Reactive form with field validation, custom `NameArticleValidator` and POST to the REST API. *(Template form also available in code)*
 - **Quantity control**: Real-time cart quantity update via PATCH requests, with automatic list refresh using `combineLatest` and `BehaviorSubject`.
 
 ### 🧱 Architecture
