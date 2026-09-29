@@ -7,6 +7,9 @@
   
 <sub>🗓️ Developed in June 2026</sub>
 
+SneakerHub is an **Angular 17 e-commerce application** for browsing and managing a sneaker catalog.
+It features **user authentication, reactive and template-driven forms, route protection, lazy loading and RxJS-based reactive data flows**, with a **Node.js + Express REST API** powering the backend.
+
 ## ✅ Features
 
 ### 🔐 Authentication
