@@ -1,4 +1,4 @@
-# <img alt="ExpoMuseos Logo" src="src/assets/images/SneakerHubREADME.png" height="150px"> — Angular sneakers directory
+# <img alt="ExpoMuseos Logo" src="src/assets/images/SneakerHubREADME.png" height="150px"> — Angular e-commerce app for browsing and managing sneakers
 
 ![Angular](https://img.shields.io/badge/Angular-17-DD0031?style=for-the-badge&logo=angular&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/Typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=black)
