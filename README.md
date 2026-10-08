@@ -201,7 +201,7 @@ const forbidden = ['prueba', 'test', 'mock', 'fake'];
 const value = control.value?.trim().toLowerCase();
 ```
 
-![Articles created with template and reactive](src/assets/images/ConsoleLog(s)_Form(s).png)
+![Articles created with template and reactive](src/assets/images/screenshots/ConsoleLog(s)_Form(s).png)
 Fig. 1 - Articles created with **template** and **reactive** forms.
 
 ---
@@ -324,10 +324,10 @@ In the navigation bar, `*ngIf="isLoggedIn$ | async"` was used to control which
 options to display depending on whether the user was logged in or not, resulting
 in two different navbar states:
 
-<img src="src/assets/images/NavbarWOLogin.png" alt="Navbar without Login" />   
+<img src="src/assets/images/screenshots/NavbarWOLogin.png" alt="Navbar without Login" />   
 Fig. 2 - Navigation bar without a logged-in user.  
 
-<img src="src/assets/images/NavbarWLogin.png" alt="Navbar with Login"/>   
+<img src="src/assets/images/screenshots/NavbarWLogin.png" alt="Navbar with Login"/>   
 Fig. 3 - Navigation bar with a logged-in user.  
 
 The assignment stated that the `/user/register` endpoint automatically assigned
@@ -377,13 +377,13 @@ $ ng serve
 the files are generated with **lazy loading**, with **chunk-GOWGP27F.js** being
 **article-module** and **chunk-ZRWLDDKV.js** being **user-module**:  
 
-<img src="src/assets/images/LazyLoadingConsole.png" alt="Lazy loading in console"/>  
+<img src="src/assets/images/screenshots/LazyLoadingConsole.png" alt="Lazy loading in console"/>  
 
 Fig. 4 - Lazy Loading shown in the console.  
 
 and they are loaded correspondingly in the browser:  
 
-<img src="src/assets/images/LazyLoadingDevTools.png" alt="Lazy loading in DevTools"/>  
+<img src="src/assets/images/screenshots/LazyLoadingDevTools.png" alt="Lazy loading in DevTools"/>  
 Fig. 5 - Lazy Loading shown in Firefox Developer DevTools.  
 
 This separation meant that the user and article modules were only downloaded
