@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
         next: () => {
           console.log('Successfully registered');
           this.successMessage = 'User created successfully, please login';
-          setTimeout(() => this.router.navigate(['/login']), 2000);
+          setTimeout(() => this.router.navigate(['/login']), 1250);
         },
         error: () => {
           this.errorMessage = 'User already exists, please login';

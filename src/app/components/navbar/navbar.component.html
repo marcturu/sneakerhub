@@ -2,49 +2,64 @@
   <div class="container">
     <a href="#" routerLink="/article/list" class="navbar-brand d-flex align-items-center gap-2">
     <img
-        src="assets/images/SneakerHub.png?width=72&as=webp"
+        src="assets/images/SneakerHub-logo.png?width=72&as=webp"
         srcset="
-          assets/images/SneakerHub.png?width=72&as=webp 1x,
-          assets/images/SneakerHub.png?width=144&as=webp 2x,
-          assets/images/SneakerHub.png?width=216&as=webp 3x
+          assets/images/SneakerHub-logo.png?width=72&as=webp 1x,
+          assets/images/SneakerHub-logo.png?width=144&as=webp 2x,
+          assets/images/SneakerHub-logo.png?width=216&as=webp 3x
         "
         alt="SneakerHub logo"
-        width="109"
+        width="163.5"
         height="109"
         decoding="async"
         fetchpriority="high"
       />
     </a>
 
-    <ul class="navbar-nav ms-auto d-flex flex-grow gap-4 align-items-center">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/login" routerLinkActive="active"
-          *ngIf="!(isLoggedIn$ | async)">
-          Log In
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/register" routerLinkActive="active"
-          *ngIf="!(isLoggedIn$ | async)">
-          Register
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/article/list" routerLinkActive="active">
-          Article List
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/article/create" routerLinkActive="active" [class.nav-link--restricted]="!(isLoggedIn$ | async)">
-          Create Article
-          <span *ngIf="!(isLoggedIn$ | async)">🔒︎</span>
-        </a>
-      </li>
-      <li class="nav-item" *ngIf="isLoggedIn$ | async">
-        <a class="nav-link nav-link--danger" (click)="logout()">
-          Logout
-        </a>
-      </li>
-    </ul>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Abrir menú de navegación"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto d-flex flex-grow gap-4 align-items-center">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login" routerLinkActive="active"
+            *ngIf="!(isLoggedIn$ | async)">
+            Log In
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/register" routerLinkActive="active"
+            *ngIf="!(isLoggedIn$ | async)">
+            Register
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/article/list" routerLinkActive="active">
+            Article List
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/article/create" routerLinkActive="active" [class.nav-link--restricted]="!(isLoggedIn$ | async)">
+            Create Article
+            <span *ngIf="!(isLoggedIn$ | async)">🔒︎</span>
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn$ | async">
+          <a class="nav-link nav-link--danger" (click)="logout()">
+            Logout
+          </a>
+        </li>
+      </ul>
+    </div>
+    
   </div>
 </nav>
